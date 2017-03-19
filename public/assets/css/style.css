@@ -1,0 +1,24 @@
+body {
+	margin-top: 50px;
+}
+
+.email-input, .message-input {
+	margin-bottom: 5px;
+}
+
+.filter-input {
+	margin-bottom: 10px;
+}
+
+.message {
+	min-height: 50px;
+}
+
+.message > img {
+	margin: 5px;
+}
+
+input.ng-touched.ng-invalid,
+textarea.ng-touched.ng-invalid{
+	border-color: lightcoral;
+}

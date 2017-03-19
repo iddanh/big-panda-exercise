@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head lang="en">
+
+	<script src="assets/vendor/js-md5/build/md5.min.js"></script>
+	<script src="assets/vendor/underscore/underscore.js"></script>
+
+	<!--jQuery-->
+	<script src="assets/vendor/jquery/dist/jquery.js"></script>
+
+	<!--Angular-->
+	<script src="assets/vendor/angular/angular.js"></script>
+	<script src="assets/vendor/angular-messages/angular-messages.js"></script>
+
+	<!--Bluebird-->
+	<script src="assets/vendor/bluebird/js/browser/bluebird.js"></script>
+	<script src="assets/vendor/angular-bluebird-promises/dist/angular-bluebird-promises.js"></script>
+
+	<!--UI-Bootstrap-->
+	<link rel="stylesheet" href="assets/vendor/bootstrap/dist/css/bootstrap.css">
+	<script src="assets/vendor/bootstrap/dist/js/bootstrap.js"></script>
+
+	<link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+<body ng-controller="MessageController as vm">
+
+<div class="row">
+	<div class="col-md-4 col-md-offset-4">
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<form name="form" id="form" novalidate>
+					<div class="form-group">
+						<input type="email" class="form-control email-input" name="email" ng-model="email"
+						       placeholder="Email" required/>
+						<div class="error-messages" ng-show="form.email.$touched && form.email.$invalid"
+						     ng-messages="form.email.$error">
+							<div class="text-danger" ng-message="required">Please enter a value for this field.</div>
+							<div class="text-danger" ng-message="email">This field must be a valid email address.</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+					<textarea class="form-control message-input" name="message" ng-model="message"
+					          placeholder="Message" required></textarea>
+						<div class="error-messages" ng-show="form.message.$touched && form.message.$invalid"
+						     ng-messages="form.message.$error">
+							<div class="text-danger" ng-message="required">Please enter a value for this field.</div>
+						</div>
+					</div>
+
+					<div class="text-right">
+						<button class="btn btn-primary" ng-click="vm.submit(email, message);">Submit</button>
+					</div>
+				</form>
+			</div>
+			<div class="panel-body">
+				<input type="text" class="form-control filter-input" placeholder="Filter" ng-model="filterText"/>
+				<div ng-repeat="message in vm.messages | filter:filterText" class="message">
+					<image ng-src="{{vm.getGravatar(message.email)}}" class="pull-left img-rounded"/>
+					<b>{{message.email}}</b>
+					<p class="text-muted">{{message.message}}</p>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<script src="/app/app.js"></script>
+<script src="/app/controller.js"></script>
+<script src="/app/comm-service.js"></script>
+</body>
+</html>
