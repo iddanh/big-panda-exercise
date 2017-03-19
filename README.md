@@ -14,3 +14,10 @@ bower install
 ```
 npm start
 ```
+
+
+
+The project will now run on the url:
+```
+http://localhost:3001/
+```
