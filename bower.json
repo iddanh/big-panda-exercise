@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "angular": "~1.6.3",
-    "underscore": "^1.8.3",
     "bluebird": "^3.5.0",
     "angular-bluebird-promises": "^1.0.2",
     "bootstrap": "^3.3.7",
